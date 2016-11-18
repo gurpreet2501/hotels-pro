@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function (Request $p) {
+
+//     return view('welcome');
+// });
+
+
+Route::post('/{v1}/{obj}/{api}', function (Request $r, $v1,$obj, $api) {
+	echo "<pre>";
+	print_r($api);
+	exit;
+    echo "<pre>";
+    print_r($r->all());
+    exit;
 });
