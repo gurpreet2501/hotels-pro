@@ -1,5 +1,5 @@
 <?php
-use App\REST\Hotel;
+namespace App\REST\Hotel;
 class Signup{
 	public function index(){
 		echo "<pre>";

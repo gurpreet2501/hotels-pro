@@ -17,11 +17,18 @@ use Illuminate\Http\Request;
 // });
 
 
-Route::post('/{v1}/{obj}/{api}', function (Request $r, $v1,$obj, $api) {
-	echo "<pre>";
-	print_r($api);
-	exit;
-    echo "<pre>";
-    print_r($r->all());
-    exit;
+Route::post('/{v1}/{obj}/{api}', function (Request $r, $v1, $obj, $api) {
+
+	if(empty($api) || empty($obj))
+		echo "error";
+
+	$path = "App\\REST\\".ucfirst($obj)."\\".ucfirst($api);
+	
+	if(!class_exists($path))
+		echo "error";
+
+	$obj = new $path;
+	$resp = $obj->index();
+	return $resp;
+	
 });
